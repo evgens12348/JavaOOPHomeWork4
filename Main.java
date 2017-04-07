@@ -14,12 +14,12 @@ public class Main {
 		}
 		s = JOptionPane.showConfirmDialog(null, "Need to find a student on the list?");
 		if (s == 0) {
-			group.poiskStudent();
+			group.poiskStudent(group.zaprosPoiskStudent());
 		}
 		group.sortArray();
 
 		System.out.println(group.toString());
-		System.out.println();
+		System.out.println("The military commissar chose:");
 		group.prizivnik();
 
 	}

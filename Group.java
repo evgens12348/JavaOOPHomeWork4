@@ -67,8 +67,8 @@ public class Group implements Voencom {
 
 	}
 
-	public void poiskStudent() {
-		String surname;
+	public String zaprosPoiskStudent() {
+		String surname="";
 		for (;;) {
 			try {
 				surname = String
@@ -82,14 +82,18 @@ public class Group implements Voencom {
 				}
 			} catch (MyExeption e) {
 				e.nameNull("null");
-			}
+			}			
 		}
-
+		return surname;
+	}
+	
+	public void poiskStudent(String surname){		
 		int k = 0;
 		for (int i = 0; i < studentGroup.length; i++) {
 			if (studentGroup[i] != null) {
 				if (studentGroup[i].getSurname().compareToIgnoreCase(surname) == 0) {
 					System.out.println(studentGroup[i]);
+					System.out.println();
 					k += 1;
 				}
 			}
@@ -111,7 +115,6 @@ public class Group implements Voencom {
 					}
 				}
 			}
-
 		}
 	}
 
@@ -127,7 +130,6 @@ public class Group implements Voencom {
 					}
 				}
 			}
-
 		}
 	}
 
@@ -143,7 +145,6 @@ public class Group implements Voencom {
 					}
 				}
 			}
-
 		}
 	}
 
@@ -159,7 +160,6 @@ public class Group implements Voencom {
 					}
 				}
 			}
-
 		}
 	}
 
