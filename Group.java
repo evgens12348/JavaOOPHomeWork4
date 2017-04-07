@@ -15,28 +15,31 @@ public class Group implements Voencom {
 		for (;;) {
 			int s = JOptionPane.showConfirmDialog(null, "Want to enter a new student into the group?");
 			if (s == 0) {
-				try {
-					if (i == studentGroup.length) {
-						resizeArray();
-					}
-					studentGroup[i] = new Student();
-					studentGroup[i].inputSurname();
-					studentGroup[i].inputName();
-					studentGroup[i].inputSex();
-					studentGroup[i].inputOld();
-					studentGroup[i].inputHighSchool();
-					studentGroup[i].inputDepartment();
-					studentGroup[i].inputKurs();
-					studentGroup[i].inputType();
-					studentGroup[i].inputAssessment();
-					i += 1;
-				} catch (MyExeption e) {
-					e.nameNull("null");
-				}
+				zanesenieStudent(i);
+				i += 1;
 			} else {
 				break;
 			}
+		}
+	}
 
+	public void zanesenieStudent(int i) {
+		try {
+			if (i == studentGroup.length) {
+				resizeArray();
+			}
+			studentGroup[i] = new Student();
+			studentGroup[i].inputSurname();
+			studentGroup[i].inputName();
+			studentGroup[i].inputSex();
+			studentGroup[i].inputOld();
+			studentGroup[i].inputHighSchool();
+			studentGroup[i].inputDepartment();
+			studentGroup[i].inputKurs();
+			studentGroup[i].inputType();
+			studentGroup[i].inputAssessment();
+		} catch (MyExeption e) {
+			e.nameNull("null");
 		}
 	}
 
@@ -46,14 +49,14 @@ public class Group implements Voencom {
 		studentGroup = temp;
 	}
 
-	public void deleteStudent() {
+	public void requestDeleteStudent() {
 		for (;;) {
 			try {
-				int n = Integer.valueOf(JOptionPane
-						.showInputDialog("Enter the number of the record you want to delete (From 1 to 10)."));
-				if (n < 1 & n > 10)
+				int n = Integer.valueOf(JOptionPane.showInputDialog(
+						"Enter the number of the record you want to delete (From 1 to " + studentGroup.length + ")."));
+				if (n < 1 & n > studentGroup.length)
 					throw new MyNegativeExeption();
-				studentGroup[n] = null;
+				deleteStudent(n);
 				break;
 			} catch (MyNegativeExeption e) {
 				e.negativeNumber();
@@ -67,8 +70,12 @@ public class Group implements Voencom {
 
 	}
 
+	public void deleteStudent(int n) {
+		studentGroup[n - 1] = null;
+	}
+
 	public String zaprosPoiskStudent() {
-		String surname="";
+		String surname = "";
 		for (;;) {
 			try {
 				surname = String
@@ -82,12 +89,12 @@ public class Group implements Voencom {
 				}
 			} catch (MyExeption e) {
 				e.nameNull("null");
-			}			
+			}
 		}
 		return surname;
 	}
-	
-	public void poiskStudent(String surname){		
+
+	public void poiskStudent(String surname) {
 		int k = 0;
 		for (int i = 0; i < studentGroup.length; i++) {
 			if (studentGroup[i] != null) {
@@ -238,7 +245,7 @@ public class Group implements Voencom {
 		}
 		for (int i = 0; i < prizivnik.length; i++) {
 			if (prizivnik[i] != null) {
-				System.out.println(prizivnik[i] + " ");
+				System.out.println(prizivnik[i]);
 			}
 		}
 	}
