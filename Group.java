@@ -99,6 +99,70 @@ public class Group implements Voencom {
 		}
 	}
 
+	public void sortArrayByName() {
+		Student temp = new Student();
+		for (int i = 0; i < studentGroup.length; i++) {
+			for (int j = studentGroup.length - 1; j > i; j--) {
+				if (studentGroup[j] != null & studentGroup[j - 1] != null) {
+					if (studentGroup[j].getName().compareToIgnoreCase(studentGroup[j - 1].getName()) < 0) {
+						temp = studentGroup[j];
+						studentGroup[j] = studentGroup[j - 1];
+						studentGroup[j - 1] = temp;
+					}
+				}
+			}
+
+		}
+	}
+
+	public void sortArrayBySurname() {
+		Student temp = new Student();
+		for (int i = 0; i < studentGroup.length; i++) {
+			for (int j = studentGroup.length - 1; j > i; j--) {
+				if (studentGroup[j] != null & studentGroup[j - 1] != null) {
+					if (studentGroup[j].getSurname().compareToIgnoreCase(studentGroup[j - 1].getSurname()) < 0) {
+						temp = studentGroup[j];
+						studentGroup[j] = studentGroup[j - 1];
+						studentGroup[j - 1] = temp;
+					}
+				}
+			}
+
+		}
+	}
+
+	public void sortArrayBySex() {
+		Student temp = new Student();
+		for (int i = 0; i < studentGroup.length; i++) {
+			for (int j = studentGroup.length - 1; j > i; j--) {
+				if (studentGroup[j] != null & studentGroup[j - 1] != null) {
+					if (studentGroup[j].getSex().compareToIgnoreCase(studentGroup[j - 1].getSex()) < 0) {
+						temp = studentGroup[j];
+						studentGroup[j] = studentGroup[j - 1];
+						studentGroup[j - 1] = temp;
+					}
+				}
+			}
+
+		}
+	}
+
+	public void sortArrayByAge() {
+		Student temp = new Student();
+		for (int i = 0; i < studentGroup.length; i++) {
+			for (int j = studentGroup.length - 1; j > i; j--) {
+				if (studentGroup[j] != null & studentGroup[j - 1] != null) {
+					if (studentGroup[j].getOld() < studentGroup[j - 1].getOld()) {
+						temp = studentGroup[j];
+						studentGroup[j] = studentGroup[j - 1];
+						studentGroup[j - 1] = temp;
+					}
+				}
+			}
+
+		}
+	}
+
 	public void sortArray() {
 		int n = 0;
 		for (;;) {
@@ -117,45 +181,19 @@ public class Group implements Voencom {
 				break;
 			}
 		}
-		Student temp = new Student();
-		for (int i = 0; i < studentGroup.length; i++) {
-			for (int j = studentGroup.length - 1; j > i; j--) {
-				if (studentGroup[j] != null & studentGroup[j - 1] != null) {
-					switch (n) {
-					case 1:
-						if (studentGroup[j].getName().compareToIgnoreCase(studentGroup[j - 1].getName()) < 0) {
-							temp = studentGroup[j];
-							studentGroup[j] = studentGroup[j - 1];
-							studentGroup[j - 1] = temp;
-						}
-
-						break;
-					case 2:
-						if (studentGroup[j].getSurname().compareToIgnoreCase(studentGroup[j - 1].getSurname()) < 0) {
-							temp = studentGroup[j];
-							studentGroup[j] = studentGroup[j - 1];
-							studentGroup[j - 1] = temp;
-						}
-						break;
-					case 3:
-						if (studentGroup[j].getSex().compareToIgnoreCase(studentGroup[j - 1].getSex()) < 0) {
-							temp = studentGroup[j];
-							studentGroup[j] = studentGroup[j - 1];
-							studentGroup[j - 1] = temp;
-						}
-						break;
-					case 4:
-						if (studentGroup[j].getOld() < studentGroup[j - 1].getOld()) {
-							temp = studentGroup[j];
-							studentGroup[j] = studentGroup[j - 1];
-							studentGroup[j - 1] = temp;
-						}
-						break;
-
-					}
-
-				}
-			}
+		switch (n) {
+		case 1:
+			sortArrayByName();
+			break;
+		case 2:
+			sortArrayBySurname();
+			break;
+		case 3:
+			sortArrayBySex();
+			break;
+		case 4:
+			sortArrayByAge();
+			break;
 		}
 	}
 
